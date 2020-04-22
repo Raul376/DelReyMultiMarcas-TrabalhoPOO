@@ -1,0 +1,19 @@
+unit uMoto;
+
+interface
+
+uses uMeioTransporte, Dialogs;
+
+type
+TMoto = class(TMeioTransporte)
+  procedure Cadastro();
+end;
+
+implementation
+
+procedure TMoto.Cadastro();
+begin
+  ShowMessage('A moto ' + Marca + Modelo + ' do ano ' + Ano + ' foi cadastrada no valor de R$' + Preco);
+end;
+
+end.

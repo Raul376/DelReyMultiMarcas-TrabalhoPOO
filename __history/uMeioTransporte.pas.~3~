@@ -1,0 +1,15 @@
+unit uMeioTransporte;
+
+interface
+
+type
+   TCarro = class
+    Modelo: string;
+    Marca: string;
+    Ano:   integer;
+    Preco: integer;
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,21 @@
+unit uMeioTransporte;
+
+interface
+
+type
+   TMeioTransporte = class
+    Modelo: string;
+    Marca: string;
+    Ano: Integer;
+    Preco: String;
+    procedure Cadastro();
+  end;
+
+implementation
+
+procedure TMeioTransporte.Cadastro;
+begin
+
+end;
+
+end.

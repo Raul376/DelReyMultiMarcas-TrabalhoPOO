@@ -1,0 +1,14 @@
+unit uCarro;
+
+interface
+
+uses uMeioTransporte;
+
+type
+TCarro = class(TMeioTransporte)
+
+end;
+
+implementation
+
+end.

@@ -1,0 +1,19 @@
+unit uCarro;
+
+interface
+
+uses uMeioTransporte, Dialogs;
+
+type
+TCarro = class(TMeioTransporte)
+  procedure Cadastro();
+end;
+
+implementation
+
+procedure TCarro.Cadastro();
+begin
+  ShowMessage('O veiculo ' + Marca + Modelo + ' do ano ' + Ano + ' foi cadastrado no valor de R$' + Preco);
+end;
+
+end.

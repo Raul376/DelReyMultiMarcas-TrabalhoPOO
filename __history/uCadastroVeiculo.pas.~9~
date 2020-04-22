@@ -1,0 +1,104 @@
+unit uCadastroVeiculo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  uCarro, uMoto, uMeioTransporte;
+
+type
+  TCadVeiculos = class(TForm)
+    GBCarro: TGroupBox;
+    GBMoto: TGroupBox;
+    EdtModeloCarro: TEdit;
+    EdtAnoCarro: TEdit;
+    EdtPrecoCarro: TEdit;
+    EdtMarcaCarro: TEdit;
+    BtnCadastrarCarro: TButton;
+    EdtModeloMoto: TEdit;
+    EdtAnoMoto: TEdit;
+    EdtMarcaMoto: TEdit;
+    EdtPrecoMoto: TEdit;
+    BtnCadastrarMoto: TButton;
+    LblModCarro: TLabel;
+    LblMarcaCarro: TLabel;
+    LblAnoCarro: TLabel;
+    LblPrecoCarro: TLabel;
+    LblModMoto: TLabel;
+    LblMarcaMoto: TLabel;
+    LblAnoMoto: TLabel;
+    LblPrecokeyMoto: TLabel;
+    procedure BtnCadastrarCarroClick(Sender: TObject);
+    procedure BtnCadastrarMotoClick(Sender: TObject);
+    procedure EdtPrecoCarroKeyPress(Sender: TObject; var Key: Char);
+    procedure EdtPrecoMotoKeyPress(Sender: TObject; var Key: Char);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Carro, Moto: TMeioTransporte
+
+  end;
+
+var
+  CadVeiculos: TCadVeiculos;
+
+implementation
+
+{$R *.dfm}
+
+procedure TCadVeiculos.BtnCadastrarCarroClick(Sender: TObject);
+begin
+    Carro := TCarro.Create;
+  if EdtModeloCarro.Text <> '' then
+    Carro.Modelo := EdtModeloCarro.Text;
+
+  if EdtAnoCarro.Text <> '' then
+    Carro.Ano := StrToIntDef(EdtAnoCarro.Text, 0);
+
+    if EdtMarcaCarro.Text <> '' then
+    Carro.Marca := EdtMarcaCarro.Text;
+
+    if EdtPrecoCarro.Text <> '' then
+    Carro.Preco := StrToFloat(EdtPrecoCarro.Text);
+end;
+
+procedure TCadVeiculos.BtnCadastrarMotoClick(Sender: TObject);
+begin
+    Moto := TMoto.Create;
+  if EdtModeloMoto.Text <> '' then
+    Moto.Modelo := EdtModeloMoto.Text;
+
+  if EdtAnoMoto.Text <> '' then
+    Moto.Ano := StrToIntDef(EdtAnoMoto.Text, 0);
+
+  if EdtMarcaMoto.Text <> '' then
+    Moto.Marca := EdtMarcaMoto.Text;
+
+  if EdtPrecoMoto.Text <> '' then
+  Moto.Preco := StrToFloat(EdtPrecoMoto.Text);
+
+end;
+
+procedure TCadVeiculos.EdtPrecoCarroKeyPress(Sender: TObject; var Key: Char);
+begin
+ if not (Key in['0'..'9', ',', '.', Chr(8)]) then
+  begin
+    MessageDlg('Voçê não digitou valores numéricos', mtError, [mbOK], 0);
+    EdtPrecoCarro.Clear;
+  end;
+end;
+
+procedure TCadVeiculos.EdtPrecoMotoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (Key in['0'..'9', ',', '.', Chr(8)]) then
+  begin
+    MessageDlg('Voçê não digitou valores numéricos', mtError, [mbOK], 0);
+    EdtPrecoMoto.Clear;
+  end;
+end;
+
+
+end.
